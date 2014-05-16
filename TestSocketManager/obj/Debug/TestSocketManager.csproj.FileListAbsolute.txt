@@ -1,0 +1,14 @@
+C:\Users\Kryzaal\documents\visual studio 2013\Projects\PrintSharpServer\TestSocketManager\bin\Debug\TestSocketManager.dll
+C:\Users\Kryzaal\documents\visual studio 2013\Projects\PrintSharpServer\TestSocketManager\bin\Debug\TestSocketManager.pdb
+C:\Users\Kryzaal\documents\visual studio 2013\Projects\PrintSharpServer\TestSocketManager\bin\Debug\SocketManager.dll
+C:\Users\Kryzaal\documents\visual studio 2013\Projects\PrintSharpServer\TestSocketManager\bin\Debug\SocketManager.pdb
+C:\Users\Kryzaal\documents\visual studio 2013\Projects\PrintSharpServer\TestSocketManager\obj\Debug\TestSocketManager.csprojResolveAssemblyReference.cache
+C:\Users\Kryzaal\documents\visual studio 2013\Projects\PrintSharpServer\TestSocketManager\obj\Debug\TestSocketManager.dll
+C:\Users\Kryzaal\documents\visual studio 2013\Projects\PrintSharpServer\TestSocketManager\obj\Debug\TestSocketManager.pdb
+C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\TestSocketManager\bin\Debug\TestSocketManager.dll
+C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\TestSocketManager\bin\Debug\TestSocketManager.pdb
+C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\TestSocketManager\bin\Debug\SocketManager.dll
+C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\TestSocketManager\bin\Debug\SocketManager.pdb
+C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\TestSocketManager\obj\Debug\TestSocketManager.csprojResolveAssemblyReference.cache
+C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\TestSocketManager\obj\Debug\TestSocketManager.dll
+C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\TestSocketManager\obj\Debug\TestSocketManager.pdb
