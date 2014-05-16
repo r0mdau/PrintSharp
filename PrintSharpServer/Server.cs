@@ -7,29 +7,22 @@ namespace PrintSharpServer
     {
         public const int DefaultPort = 5656;
 
-        public List<Imprimante> Imprimantes { get { return _imprimantes.Select(etatImprimante => etatImprimante.Imprimante).ToList(); } }
-        private readonly List<EtatImprimante> _imprimantes = new List<EtatImprimante>(); 
+        private readonly List<EtatImprimante> _imprimantes = new List<EtatImprimante>();
 
-        private class EtatImprimante
+        public Server(IEnumerable<Imprimante> imprimantes = null)
         {
-            public Imprimante Imprimante { get; private set; }
-            public bool Active;
-            public EtatImprimante(Imprimante imprimante)
-            {
-                Active = false;
-                Imprimante = imprimante;
-            }
+            if (imprimantes == null) return;
+            foreach (Imprimante imprimante in imprimantes) _imprimantes.Add(new EtatImprimante(imprimante));
+        }
+
+        public List<Imprimante> Imprimantes
+        {
+            get { return _imprimantes.Select(etatImprimante => etatImprimante.Imprimante).ToList(); }
         }
 
         public static string Ping()
         {
             return "OK";
-        }
-
-        public Server(IEnumerable<Imprimante> imprimantes = null)
-        {
-            if (imprimantes == null) return;
-            foreach (var imprimante in imprimantes) _imprimantes.Add(new EtatImprimante(imprimante));
         }
 
         public bool EstActive(Imprimante imprimante)
@@ -39,14 +32,27 @@ namespace PrintSharpServer
 
         public void Activer(Imprimante imprimante)
         {
-            var etat = _imprimantes.First(imp => imp.Imprimante.Equals(imprimante));
+            EtatImprimante etat = _imprimantes.First(imp => imp.Imprimante.Equals(imprimante));
             etat.Active = true;
         }
 
         public void Desactiver(Imprimante imprimante)
         {
-            var etat = _imprimantes.First(imp => imp.Imprimante.Equals(imprimante));
+            EtatImprimante etat = _imprimantes.First(imp => imp.Imprimante.Equals(imprimante));
             etat.Active = false;
+        }
+
+        private class EtatImprimante
+        {
+            public bool Active;
+
+            public EtatImprimante(Imprimante imprimante)
+            {
+                Active = false;
+                Imprimante = imprimante;
+            }
+
+            public Imprimante Imprimante { get; private set; }
         }
     }
 }

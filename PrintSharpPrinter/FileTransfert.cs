@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
-
+using System.Text;
 
 namespace PrintSharpPrinter
 {
-    class FileTransfert
+    internal class FileTransfert
     {
         //FILE TRANSFER USING C#.NET SOCKET - SERVER
-                
-        IPEndPoint ipEnd;
-        Socket sock;
+
+        public static string curMsg = "Stopped";
+        private readonly Socket sock;
+        private IPEndPoint ipEnd;
+
         public FileTransfert()
         {
             ipEnd = new IPEndPoint(IPAddress.Any, 5656);
@@ -20,7 +22,7 @@ namespace PrintSharpPrinter
             sock.Bind(ipEnd);
             //Bind end point with newly created socket.
         }
-        public static string curMsg = "Stopped";
+
         public void StartServer()
         {
             try
@@ -33,10 +35,10 @@ namespace PrintSharpPrinter
                 Socket clientSock = sock.Accept();
                 /* When request comes from client that accept it and return 
                 new socket object for handle that client. */
-                byte[] clientData = new byte[1024 * 5000];
+                var clientData = new byte[1024*5000];
                 int receivedBytesLen = clientSock.Receive(clientData);
-                string result = System.Text.Encoding.UTF8.GetString(clientData);
-                Console.WriteLine("Receiving data..." + result);          
+                string result = Encoding.UTF8.GetString(clientData);
+                Console.WriteLine("Receiving data..." + result);
                 clientSock.Close();
                 /* Close binary writer and client socket */
                 Console.WriteLine("Received; Server Stopped.");
@@ -45,6 +47,6 @@ namespace PrintSharpPrinter
             {
                 Console.WriteLine("File Receiving error.");
             }
-        }   
+        }
     }
 }
