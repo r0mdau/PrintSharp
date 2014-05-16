@@ -1,31 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace PrintSharpPrinter
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
-        /// Point d'entrée principal de l'application.
+        ///     Point d'entrée principal de l'application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Thread leThread = new Thread(startServer);
+            var leThread = new Thread(startServer);
             leThread.Start();
             leThread.IsBackground = true;
             Application.Run(new PrinterWindow());
-
         }
-        static void startServer()
+
+        private static void startServer()
         {
-            FileTransfert filetransfert = new FileTransfert();
+            var filetransfert = new FileTransfert();
             filetransfert.StartServer();
         }
     }

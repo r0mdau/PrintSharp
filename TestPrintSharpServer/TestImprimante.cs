@@ -22,7 +22,7 @@ namespace TestPrintSharpServer
         [TestMethod]
         public void TestEstUniqueParIpEtPort()
         {
-            var imprimante = CreerAvecIpEtPort("10.2.10.3", 5657);
+            Imprimante imprimante = CreerAvecIpEtPort("10.2.10.3", 5657);
 
             Assert.AreEqual(imprimante, CreerAvecIpEtPort("10.2.10.3", 5657));
             Assert.AreNotEqual(imprimante, CreerAvecIpEtPort("10.2.10.4", 5657));
@@ -42,7 +42,6 @@ namespace TestPrintSharpServer
             {
                 ping.Dispose();
             }
-            
         }
 
         private static Imprimante CreerAvecIpEtPort(string ip = null, int port = 0)
@@ -65,7 +64,7 @@ namespace TestPrintSharpServer
                 Assert.AreEqual(Imprimante.DefaultPort, imprimante.Port);
                 Assert.AreEqual(Imprimante.DefaultIp, imprimante.Ip);
             }
-            
+
             return imprimante;
         }
     }

@@ -2,10 +2,11 @@
 
 namespace PrintSharpClient
 {
-    class FileToSend
+    internal class FileToSend
     {
         private readonly string _name;
         private readonly int _size;
+
         public FileToSend(String name, int size)
         {
             _name = name;

@@ -19,17 +19,23 @@ namespace TestSocketManager
         [TestMethod]
         public void TestSendAndWaitForResponse()
         {
-            var query = new byte[] { 0, 1 };
-            var response = new byte[] { 2, 0 };
+            var query = new byte[] {0, 1};
+            var response = new byte[] {2, 0};
             var realResponse = new byte[0];
 
             var thr = new Thread(() =>
             {
-                realResponse = SocketManager.SocketManager.SendAndWaitForResponse(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 40560),
-                query, 40561, 30);
+                realResponse =
+                    SocketManager.SocketManager.SendAndWaitForResponse(
+                        new IPEndPoint(IPAddress.Parse("127.0.0.1"), 40560),
+                        query, 40561, 30);
             });
 
-            var sendThr = new Thread(() => SocketManager.SocketManager.TrySend(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 40561), response, 10));
+            var sendThr =
+                new Thread(
+                    () =>
+                        SocketManager.SocketManager.TrySend(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 40561),
+                            response, 10));
 
             thr.Start();
             sendThr.Start();
@@ -42,17 +48,23 @@ namespace TestSocketManager
         [TestMethod]
         public void TestAutoSendAndReceive()
         {
-            var query = new byte[] { 0, 1 };
-            var response = new byte[] { 2, 0 };
+            var query = new byte[] {0, 1};
+            var response = new byte[] {2, 0};
             var realResponse = new byte[0];
 
             var thr = new Thread(() =>
             {
-                realResponse = SocketManager.SocketManager.SendAndWaitForResponse(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 40560),
-                query, 40561, 30);
+                realResponse =
+                    SocketManager.SocketManager.SendAndWaitForResponse(
+                        new IPEndPoint(IPAddress.Parse("127.0.0.1"), 40560),
+                        query, 40561, 30);
             });
 
-            var sendThr = new Thread(() => SocketManager.SocketManager.RespondToGivenQuery(query, response, new IPEndPoint(IPAddress.Parse("127.0.0.1"), 40561), 41560));
+            var sendThr =
+                new Thread(
+                    () =>
+                        SocketManager.SocketManager.RespondToGivenQuery(query, response,
+                            new IPEndPoint(IPAddress.Parse("127.0.0.1"), 40561), 41560));
 
             sendThr.Start();
             thr.Start();
@@ -64,15 +76,15 @@ namespace TestSocketManager
 
         private static bool Receive(Action action, int timeout)
         {
-            var received = false;
+            bool received = false;
             var receiver = new Receiver(40560, bytes => received = true);
             receiver.WaitIsReady();
 
-            var expiration = DateTime.Now.AddSeconds(timeout);
+            DateTime expiration = DateTime.Now.AddSeconds(timeout);
             try
             {
                 action.Invoke();
-                while(expiration.CompareTo(DateTime.Now) > 0 && !received) Thread.Sleep(1);
+                while (expiration.CompareTo(DateTime.Now) > 0 && !received) Thread.Sleep(1);
                 return received;
             }
             finally
@@ -83,7 +95,7 @@ namespace TestSocketManager
 
         private static void Send()
         {
-            SocketManager.SocketManager.Send(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 40560), new byte[]{0, 1});
+            SocketManager.SocketManager.Send(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 40560), new byte[] {0, 1});
         }
     }
 }

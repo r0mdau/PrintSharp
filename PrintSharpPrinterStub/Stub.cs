@@ -7,10 +7,10 @@ namespace PrintSharpPrinterStub
 {
     public class Ping : IDisposable
     {
-        private readonly Thread _innerThread;
         private static IPEndPoint _distant;
         private static int _localPort;
         private static bool _listenerReady;
+        private readonly Thread _innerThread;
 
         public Ping(int serverPort, int printerPort)
         {
@@ -19,20 +19,20 @@ namespace PrintSharpPrinterStub
             _distant = new IPEndPoint(IPAddress.Parse("127.0.0.1"), serverPort);
             _localPort = printerPort;
             _innerThread.Start();
-            while(!_listenerReady) Thread.Sleep(1);
-        }
-
-        private static void Listen()
-        {
-            var expectedQuery = Encoding.UTF8.GetBytes("ping");
-            var response = Encoding.UTF8.GetBytes("OK");
-
-            SocketManager.SocketManager.RespondToGivenQuery(expectedQuery, response, _distant, _localPort);
+            while (!_listenerReady) Thread.Sleep(1);
         }
 
         public void Dispose()
         {
             _innerThread.Abort();
+        }
+
+        private static void Listen()
+        {
+            byte[] expectedQuery = Encoding.UTF8.GetBytes("ping");
+            byte[] response = Encoding.UTF8.GetBytes("OK");
+
+            SocketManager.SocketManager.RespondToGivenQuery(expectedQuery, response, _distant, _localPort);
         }
     }
 }

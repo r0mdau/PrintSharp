@@ -18,7 +18,7 @@ namespace TestPrintSharpServer
         [TestMethod]
         public void TestPeutActiverUneImprimanteJoignable()
         {
-            var list = CreerListeImprimantesTest();
+            Dictionary<string, Imprimante> list = CreerListeImprimantesTest();
             ChangerEtatActivation(CreerServerAvecListeImprimante(list.Values.ToList()), list["Joignable"], true);
             try
             {
@@ -33,16 +33,16 @@ namespace TestPrintSharpServer
         [TestMethod]
         public void TestPeutDesactiverUneImprimante()
         {
-            var list = CreerListeImprimantesTest();
+            Dictionary<string, Imprimante> list = CreerListeImprimantesTest();
             ChangerEtatActivation(CreerServerAvecListeImprimante(list.Values.ToList()), list["Joignable"], false);
         }
 
         private static void ChangerEtatActivation(Server server, Imprimante aChanger, bool activer)
         {
-            var etatsInitiaux = server.Imprimantes.Select(server.EstActive).ToList();
+            List<bool> etatsInitiaux = server.Imprimantes.Select(server.EstActive).ToList();
             if (activer) server.Activer(aChanger);
             else server.Desactiver(aChanger);
-            var etatsFinaux = server.Imprimantes.Select(server.EstActive).ToList();
+            List<bool> etatsFinaux = server.Imprimantes.Select(server.EstActive).ToList();
 
             Assert.AreEqual(activer, server.EstActive(aChanger));
             Assert.IsTrue(etatsInitiaux.Except(etatsFinaux).Count() <= 1);
@@ -53,14 +53,18 @@ namespace TestPrintSharpServer
             var srv = new Server(imprimantes);
             Assert.AreEqual(0, imprimantes != null ? imprimantes.Except(srv.Imprimantes).Count() : srv.Imprimantes.Count);
 
-            foreach (var imprimante in srv.Imprimantes) Assert.IsFalse(srv.EstActive(imprimante));
+            foreach (Imprimante imprimante in srv.Imprimantes) Assert.IsFalse(srv.EstActive(imprimante));
 
             return srv;
         }
 
         private static Dictionary<string, Imprimante> CreerListeImprimantesTest()
         {
-            var dictionnary = new Dictionary<string, Imprimante> { { "Joignable", new ImprimanteStub() }, { "Injoignable", new Imprimante() } };
+            var dictionnary = new Dictionary<string, Imprimante>
+            {
+                {"Joignable", new ImprimanteStub()},
+                {"Injoignable", new Imprimante()}
+            };
             try
             {
                 Assert.IsTrue(dictionnary["Joignable"].Ping());
@@ -71,8 +75,8 @@ namespace TestPrintSharpServer
                 dictionnary["Joignable"].Dispose();
                 dictionnary["Injoignable"].Dispose();
             }
-            
+
             return dictionnary;
-        } 
+        }
     }
 }

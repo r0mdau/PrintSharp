@@ -9,8 +9,8 @@ namespace SocketManager
 {
     public class Receiver : IDisposable
     {
-        private readonly Thread _receiverThread;
         private readonly ClientHandler[] _handlers;
+        private readonly Thread _receiverThread;
         private bool _readyToReceive;
 
         public Receiver(int listenedPort, Action<byte[]> receivedDataHandler, int slots = 10)
@@ -24,6 +24,18 @@ namespace SocketManager
             _handlers = ClientHandler.GetPool(receivedDataHandler, slots);
         }
 
+        public void Dispose()
+        {
+            _readyToReceive = false;
+
+            foreach (ClientHandler clientHandler in _handlers)
+            {
+                clientHandler.Dispose();
+            }
+
+            _receiverThread.Abort();
+        }
+
         private static void StartReceiver(ref bool ready, int port, ClientHandler[] pool)
         {
             TcpListener server = null;
@@ -35,7 +47,7 @@ namespace SocketManager
                 while (true)
                 {
                     ready = true;
-                    var client = server.AcceptTcpClient();
+                    TcpClient client = server.AcceptTcpClient();
                     try
                     {
                         pool.First(element => element.Free).Handle(client);
@@ -53,18 +65,6 @@ namespace SocketManager
             }
         }
 
-        public void Dispose()
-        {
-            _readyToReceive = false;
-
-            foreach (var clientHandler in _handlers)
-            {
-                clientHandler.Dispose();
-            }
-
-            _receiverThread.Abort();
-        }
-
         public void WaitIsReady()
         {
             while (!_readyToReceive) Thread.Sleep(1);
@@ -73,16 +73,8 @@ namespace SocketManager
 
     internal class ClientHandler : IDisposable
     {
-        public bool Free { get; private set; }
         private readonly Thread _thread;
         private TcpClient _client;
-
-        public static ClientHandler[] GetPool(Action<byte[]> receivedDataHandler, int number)
-        {
-            var handlers = new List<ClientHandler>();
-            for(var i = 0; i < number; i++) handlers.Add(new ClientHandler(receivedDataHandler));
-            return handlers.ToArray();
-        }
 
         private ClientHandler(Action<byte[]> receivedDataHandler)
         {
@@ -94,10 +86,26 @@ namespace SocketManager
             Free = true;
         }
 
+        public bool Free { get; private set; }
+
+        public void Dispose()
+        {
+            Free = false;
+            if (_thread != null) _thread.Abort();
+            if (_client != null) _client.Close();
+        }
+
+        public static ClientHandler[] GetPool(Action<byte[]> receivedDataHandler, int number)
+        {
+            var handlers = new List<ClientHandler>();
+            for (int i = 0; i < number; i++) handlers.Add(new ClientHandler(receivedDataHandler));
+            return handlers.ToArray();
+        }
+
         private static void DoAction(ref TcpClient client, Action<byte[]> action, Action onFinish)
         {
             var bytes = new List<byte>();
-            var networkStream = client.GetStream();
+            NetworkStream networkStream = client.GetStream();
             var buffer = new byte[client.ReceiveBufferSize];
 
             while (networkStream.DataAvailable)
@@ -118,12 +126,5 @@ namespace SocketManager
             _client = client;
             _thread.Start();
         }
-
-        public void Dispose()
-        {
-            Free = false;
-            if(_thread != null) _thread.Abort();
-            if(_client != null) _client.Close();
-        }
-    } 
+    }
 }

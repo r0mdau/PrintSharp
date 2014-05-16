@@ -1,15 +1,16 @@
 ﻿using System;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Windows.Forms;
-using System.Net.NetworkInformation;
 
 namespace PrintSharpClient
 {
     public partial class MainView : Form
     {
-        public MainView(){
+        public MainView()
+        {
             InitializeComponent();
-        }        
+        }
 
         private void BtnSelectFileClick(object sender, EventArgs e)
         {
@@ -57,12 +58,12 @@ namespace PrintSharpClient
         {
             var pingSender = new Ping();
             var options = new PingOptions {DontFragment = true};
-            var buffer = Encoding.ASCII.GetBytes("wazaajaitrentedeuxbitsdansmonsac");
+            byte[] buffer = Encoding.ASCII.GetBytes("wazaajaitrentedeuxbitsdansmonsac");
             const int timeout = 120;
-            var ip = !string.IsNullOrEmpty(pathToFile.Text) ? pathToFile.Text : "8.8.8.8";
+            string ip = !string.IsNullOrEmpty(pathToFile.Text) ? pathToFile.Text : "8.8.8.8";
             try
             {
-                var reply = pingSender.Send(ip, timeout, buffer, options);
+                PingReply reply = pingSender.Send(ip, timeout, buffer, options);
 
                 if (reply == null || reply.Status != IPStatus.Success) return;
 

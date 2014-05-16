@@ -16,18 +16,19 @@ namespace SocketManager
 
         public static byte[] SendAndWaitForResponse(IPEndPoint distant, byte[] data, int localPort, int timeout = 0)
         {
-            var hasReceived = false;
-            var result = new byte[1024 * 5000];
-            var receiver = new Receiver(localPort, bytes => { 
+            bool hasReceived = false;
+            var result = new byte[1024*5000];
+            var receiver = new Receiver(localPort, bytes =>
+            {
                 result = bytes;
                 hasReceived = true;
             });
-            var expiration = DateTime.Now.AddSeconds(timeout);
+            DateTime expiration = DateTime.Now.AddSeconds(timeout);
 
             receiver.WaitIsReady();
             Send(distant, data);
 
-            while(!hasReceived || expiration.CompareTo(DateTime.Now) <= 0) Thread.Sleep(10);
+            while (!hasReceived || expiration.CompareTo(DateTime.Now) <= 0) Thread.Sleep(10);
             receiver.Dispose();
 
             return result;
@@ -50,7 +51,7 @@ namespace SocketManager
 
         public static bool TrySend(EndPoint distant, byte[] data, int timeout)
         {
-            var expiration = DateTime.Now.AddSeconds(timeout);
+            DateTime expiration = DateTime.Now.AddSeconds(timeout);
             while (DateTime.Now.CompareTo(expiration) < 0)
                 try
                 {
