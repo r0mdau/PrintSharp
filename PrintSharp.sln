@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintSharpClient", "PrintSharpClient\PrintSharpClient.csproj", "{C8FCA3A3-C7EC-4696-8F5A-F6AF6FD8B60D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C04A9E2D-04B1-4BA8-BBEA-AA62DBDF70DD} = {C04A9E2D-04B1-4BA8-BBEA-AA62DBDF70DD}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintSharpPrinter", "PrintSharpPrinter\PrintSharpPrinter.csproj", "{AADB0ABA-6F17-4A0F-9AA7-FDF9576613C7}"
 EndProject
