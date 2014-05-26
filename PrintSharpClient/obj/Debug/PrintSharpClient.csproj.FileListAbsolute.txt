@@ -12,3 +12,6 @@ C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpClie
 C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.csproj.GenerateResource.Cache
 C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.exe
 C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.pdb
+C:\Users\Loïc\Source\Repos\PrintSharp\PrintSharpClient\bin\Debug\PrintSharpClient.exe.config
+C:\Users\Loïc\Source\Repos\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.exe
+C:\Users\Loïc\Source\Repos\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.pdb
