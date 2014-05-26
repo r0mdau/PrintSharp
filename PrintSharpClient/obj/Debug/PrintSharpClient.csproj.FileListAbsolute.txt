@@ -16,3 +16,6 @@ C:\Users\Loïc\Source\Repos\PrintSharp\PrintSharpClient\bin\Debug\PrintSharpClie
 C:\Users\Loïc\Source\Repos\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.csprojResolveAssemblyReference.cache
 C:\Users\Loïc\Source\Repos\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.MainView.resources
 C:\Users\Loïc\Source\Repos\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.csproj.GenerateResource.Cache
+D:\Cours-I4\Projet_C#\PrintSharp\PrintSharpClient\bin\Debug\PrintSharpClient.exe.config
+D:\Cours-I4\Projet_C#\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.exe
+D:\Cours-I4\Projet_C#\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.pdb
