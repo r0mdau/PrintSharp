@@ -8,3 +8,8 @@ C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharpClient\PrintSha
 C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.exe
 C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.pdb
 C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpClient\bin\Debug\PrintSharpClient.exe.config
+C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpClient\bin\Debug\PrintSharpClient.exe
+C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpClient\bin\Debug\PrintSharpClient.pdb
+C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.csprojResolveAssemblyReference.cache
+C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.MainView.resources
+C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.csproj.GenerateResource.Cache

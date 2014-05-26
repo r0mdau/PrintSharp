@@ -9,6 +9,5 @@ C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpServ
 C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpServer\obj\Debug\PrintSharpServer.pdb
 C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpServer\bin\Debug\PrintSharpServer.exe
 C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpServer\bin\Debug\PrintSharpServer.pdb
-C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpServer\bin\Debug\SocketManager.dll
-C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpServer\bin\Debug\SocketManager.pdb
 C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpServer\obj\Debug\PrintSharpServer.csprojResolveAssemblyReference.cache
+C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpServer\bin\Debug\PrintSharpServer.exe.config
