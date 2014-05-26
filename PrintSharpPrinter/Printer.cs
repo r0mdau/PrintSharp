@@ -24,11 +24,6 @@ namespace PrintSharpPrinter
             _instance = new Printer();
         }
 
-        public static Printer Instance()
-        {
-            return _instance;
-        }
-
         public string Status(int jobId)
         {
             throw new NotImplementedException();
@@ -42,6 +37,11 @@ namespace PrintSharpPrinter
         public bool Ping()
         {
             throw new NotImplementedException();
+        }
+
+        public static Printer Instance()
+        {
+            return _instance;
         }
     }
 }
