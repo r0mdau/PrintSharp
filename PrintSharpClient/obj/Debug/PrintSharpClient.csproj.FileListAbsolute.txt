@@ -7,3 +7,4 @@ C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharpClient\PrintSha
 C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharpClient\PrintSharpClient\obj\Debug\PrintSharpClient.pdb
 C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.exe
 C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpClient\obj\Debug\PrintSharpClient.pdb
+C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\PrintSharpClient\bin\Debug\PrintSharpClient.exe.config

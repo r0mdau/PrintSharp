@@ -42,13 +42,6 @@ namespace PrintSharpClient
             }
         }
 
-        private void Log(String message)
-        {
-            inputLog.Text += message + Environment.NewLine;
-            inputLog.SelectionStart = inputLog.Text.Length;
-            inputLog.ScrollToCaret();
-        }
-
         private void BtnCloseClick(object sender, EventArgs e)
         {
             Close();
@@ -77,6 +70,13 @@ namespace PrintSharpClient
             {
                 Log("Erreur : adresse ip incorrecte !");
             }
+        }
+
+        private void Log(String message)
+        {
+            inputLog.Text += message + Environment.NewLine;
+            inputLog.SelectionStart = inputLog.Text.Length;
+            inputLog.ScrollToCaret();
         }
     }
 }

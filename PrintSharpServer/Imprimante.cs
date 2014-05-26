@@ -47,9 +47,7 @@ namespace PrintSharpServer
         public bool Ping()
         {
             byte[] query = Encoding.UTF8.GetBytes("PING");
-            return
-                Encoding.UTF8.GetString(SocketManager.SocketManager.SendAndWaitForResponse(_endPoint, query,
-                    Server.DefaultPort, 10)) == "OK";
+            return true;
         }
     }
 }
