@@ -1,9 +1,0 @@
-C:\Users\Kryzaal\documents\visual studio 2013\Projects\PrintSharpServer\SocketManager\bin\Debug\SocketManager.dll
-C:\Users\Kryzaal\documents\visual studio 2013\Projects\PrintSharpServer\SocketManager\bin\Debug\SocketManager.pdb
-C:\Users\Kryzaal\documents\visual studio 2013\Projects\PrintSharpServer\SocketManager\obj\Debug\SocketManager.dll
-C:\Users\Kryzaal\documents\visual studio 2013\Projects\PrintSharpServer\SocketManager\obj\Debug\SocketManager.pdb
-C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\SocketManager\bin\Debug\SocketManager.dll
-C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\SocketManager\bin\Debug\SocketManager.pdb
-C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\SocketManager\obj\Debug\SocketManager.csprojResolveAssemblyReference.cache
-C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\SocketManager\obj\Debug\SocketManager.dll
-C:\Users\Kryzaal\Documents\Visual Studio 2013\Projects\PrintSharp\SocketManager\obj\Debug\SocketManager.pdb

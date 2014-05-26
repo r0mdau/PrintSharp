@@ -7,15 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintSharpClient", "PrintSh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintSharpPrinter", "PrintSharpPrinter\PrintSharpPrinter.csproj", "{AADB0ABA-6F17-4A0F-9AA7-FDF9576613C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintSharpPrinterStub", "PrintSharpPrinterStub\PrintSharpPrinterStub.csproj", "{A8E534B7-AC30-4FA1-B703-9306B92E3369}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintSharpServer", "PrintSharpServer\PrintSharpServer.csproj", "{1840FDAD-E262-4776-BBF4-930441E78668}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketManager", "SocketManager\SocketManager.csproj", "{7793E4B8-806B-4A7E-AC28-CB304E0A251C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPrintSharpServer", "TestPrintSharpServer\TestPrintSharpServer.csproj", "{00FE44E0-02D9-4E00-9F81-6A085BE374BB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSocketManager", "TestSocketManager\TestSocketManager.csproj", "{4FAB76F5-2EEC-4257-A8D4-786FFB619616}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintSharpService", "PrintSharpService\PrintSharpService.csproj", "{9C28E796-26B3-430A-AF58-85159C684847}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,26 +25,14 @@ Global
 		{AADB0ABA-6F17-4A0F-9AA7-FDF9576613C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AADB0ABA-6F17-4A0F-9AA7-FDF9576613C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AADB0ABA-6F17-4A0F-9AA7-FDF9576613C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A8E534B7-AC30-4FA1-B703-9306B92E3369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8E534B7-AC30-4FA1-B703-9306B92E3369}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8E534B7-AC30-4FA1-B703-9306B92E3369}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8E534B7-AC30-4FA1-B703-9306B92E3369}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1840FDAD-E262-4776-BBF4-930441E78668}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1840FDAD-E262-4776-BBF4-930441E78668}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1840FDAD-E262-4776-BBF4-930441E78668}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1840FDAD-E262-4776-BBF4-930441E78668}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7793E4B8-806B-4A7E-AC28-CB304E0A251C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7793E4B8-806B-4A7E-AC28-CB304E0A251C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7793E4B8-806B-4A7E-AC28-CB304E0A251C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7793E4B8-806B-4A7E-AC28-CB304E0A251C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{00FE44E0-02D9-4E00-9F81-6A085BE374BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{00FE44E0-02D9-4E00-9F81-6A085BE374BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{00FE44E0-02D9-4E00-9F81-6A085BE374BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{00FE44E0-02D9-4E00-9F81-6A085BE374BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4FAB76F5-2EEC-4257-A8D4-786FFB619616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4FAB76F5-2EEC-4257-A8D4-786FFB619616}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4FAB76F5-2EEC-4257-A8D4-786FFB619616}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4FAB76F5-2EEC-4257-A8D4-786FFB619616}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C28E796-26B3-430A-AF58-85159C684847}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C28E796-26B3-430A-AF58-85159C684847}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C28E796-26B3-430A-AF58-85159C684847}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C28E796-26B3-430A-AF58-85159C684847}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -49,12 +49,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SocketManager\SocketManager.csproj">
-      <Project>{7793e4b8-806b-4a7e-ac28-cb304e0a251c}</Project>
-      <Name>SocketManager</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
