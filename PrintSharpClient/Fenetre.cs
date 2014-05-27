@@ -52,7 +52,7 @@ namespace PrintSharpClient
         {
             if (!string.IsNullOrEmpty(pathToFile.Text))
             {
-                var jobId = _client.Print(File.ReadAllText(pathToFile.Text).Length, pathToFile.Text, 1);
+                var jobId = _client.Print(File.ReadAllText(pathToFile.Text).Length);
                 PrintingJob.Add(jobId, string.Format("Job {0} : {1}", jobId, DocumentState.Waiting));
                 var thread = new Thread(() => CheckStatus(jobId)) {IsBackground = true};
                 thread.Start();
