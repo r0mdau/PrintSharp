@@ -16,6 +16,9 @@ bld/
 [Bb]in/
 [Oo]bj/
 
+PrintSharpClient/obj
+PrintSharpClient/bin
+
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
