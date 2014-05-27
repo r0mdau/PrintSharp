@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 using WebserviceAbstract;
+using System.Collections.Generic;
 
 namespace PrintSharpClient
 {
@@ -10,6 +11,7 @@ namespace PrintSharpClient
     {
         private const string ServerUri = @"http://localhost:40129/Server.asmx";
         private readonly Client _client = new Client(ServerUri);
+        private readonly Dictionary<int, string> PrintingJob = new Dictionary<int, string>();
 
         public MainView()
         {
@@ -38,10 +40,12 @@ namespace PrintSharpClient
 
             while (status != DocumentState.Done)
             {
-                status = _client.Status(jobId);
-                Log(string.Format("Job {0} : {1}", jobId, status));
+                status = _client.Status(jobId);                
+                PrintingJob[jobId] =  string.Format("Job {0} : {1}", jobId, status);
+                PrintingLog();
                 Thread.Sleep(1000);
             }
+            PrintingJob[jobId] = string.Format("Job {0} : {1}", jobId, DocumentState.Done);
         }
 
         private void BtnPrintClick(object sender, EventArgs e)
@@ -49,7 +53,7 @@ namespace PrintSharpClient
             if (!string.IsNullOrEmpty(pathToFile.Text))
             {
                 var jobId = _client.Print(File.ReadAllText(pathToFile.Text).Length, pathToFile.Text, 1);
-
+                PrintingJob.Add(jobId, string.Format("Job {0} : {1}", jobId, DocumentState.Waiting));
                 var thread = new Thread(() => CheckStatus(jobId)) {IsBackground = true};
                 thread.Start();
 
@@ -59,6 +63,16 @@ namespace PrintSharpClient
             {
                 Log("Veuillez sélectionner un fichier avant de lancer l'impression");
             }
+        }
+
+        private void PrintingLog()
+        {
+            String message = "";
+            foreach (KeyValuePair<int, string> job in PrintingJob)
+            {
+                message += string.Format("Job {0} : {1}", job.Key, job.Value) + "\n";
+            }
+            Log(message);
         }
 
         private void BtnCloseClick(object sender, EventArgs e)
@@ -84,7 +98,7 @@ namespace PrintSharpClient
                     return;
                 }
             }
-            inputLog.Text += message + Environment.NewLine;
+            inputLog.Text = message + Environment.NewLine;
             inputLog.ScrollToCaret();
         }
     }

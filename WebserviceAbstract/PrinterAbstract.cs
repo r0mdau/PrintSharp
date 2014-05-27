@@ -78,6 +78,7 @@ namespace WebserviceAbstract
 
         public static int Print(int taille, string nom, int copies)
         {
+            copies = 1;
             lock (Verrou)
             {
                 var leJob = new Job(++_jobs, taille * copies, DocumentState.Waiting);
