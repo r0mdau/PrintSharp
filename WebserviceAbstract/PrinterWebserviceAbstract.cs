@@ -14,7 +14,7 @@ namespace WebserviceAbstract
         [WebMethod]
         public int Print(int taille, string nom, int copies)
         {
-            return PrinterAbstract<T>.Print(taille, nom, copies);
+            return PrinterAbstract<T>.Print(taille);
         }
 
         [WebMethod]

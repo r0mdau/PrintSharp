@@ -12,18 +12,18 @@ namespace WebserviceAbstract.DistantPrinter {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://127.0.0.1/", ConfigurationName="DistantPrinter.PrinterSoap")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DistantPrinter.PrinterSoap")]
     public interface PrinterSoap {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://127.0.0.1/Ping", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Ping", ReplyAction="*")]
         bool Ping();
         
-        // CODEGEN : La génération du contrat de message depuis le nom d'élément nom de l'espace de noms http://127.0.0.1/ n'est pas marqué nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://127.0.0.1/Print", ReplyAction="*")]
+        // CODEGEN : La génération du contrat de message depuis le nom d'élément nom de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Print", ReplyAction="*")]
         WebserviceAbstract.DistantPrinter.PrintResponse Print(WebserviceAbstract.DistantPrinter.PrintRequest request);
         
-        // CODEGEN : La génération du contrat de message depuis le nom d'élément StatusResult de l'espace de noms http://127.0.0.1/ n'est pas marqué nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://127.0.0.1/Status", ReplyAction="*")]
+        // CODEGEN : La génération du contrat de message depuis le nom d'élément StatusResult de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Status", ReplyAction="*")]
         WebserviceAbstract.DistantPrinter.StatusResponse Status(WebserviceAbstract.DistantPrinter.StatusRequest request);
     }
     
@@ -33,7 +33,7 @@ namespace WebserviceAbstract.DistantPrinter {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class PrintRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="Print", Namespace="http://127.0.0.1/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="Print", Namespace="http://tempuri.org/", Order=0)]
         public WebserviceAbstract.DistantPrinter.PrintRequestBody Body;
         
         public PrintRequest() {
@@ -47,7 +47,7 @@ namespace WebserviceAbstract.DistantPrinter {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://127.0.0.1/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class PrintRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
@@ -75,7 +75,7 @@ namespace WebserviceAbstract.DistantPrinter {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class PrintResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="PrintResponse", Namespace="http://127.0.0.1/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="PrintResponse", Namespace="http://tempuri.org/", Order=0)]
         public WebserviceAbstract.DistantPrinter.PrintResponseBody Body;
         
         public PrintResponse() {
@@ -89,7 +89,7 @@ namespace WebserviceAbstract.DistantPrinter {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://127.0.0.1/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class PrintResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
@@ -109,7 +109,7 @@ namespace WebserviceAbstract.DistantPrinter {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class StatusRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="Status", Namespace="http://127.0.0.1/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="Status", Namespace="http://tempuri.org/", Order=0)]
         public WebserviceAbstract.DistantPrinter.StatusRequestBody Body;
         
         public StatusRequest() {
@@ -123,7 +123,7 @@ namespace WebserviceAbstract.DistantPrinter {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://127.0.0.1/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class StatusRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
@@ -143,7 +143,7 @@ namespace WebserviceAbstract.DistantPrinter {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class StatusResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="StatusResponse", Namespace="http://127.0.0.1/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="StatusResponse", Namespace="http://tempuri.org/", Order=0)]
         public WebserviceAbstract.DistantPrinter.StatusResponseBody Body;
         
         public StatusResponse() {
@@ -157,7 +157,7 @@ namespace WebserviceAbstract.DistantPrinter {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://127.0.0.1/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class StatusResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]

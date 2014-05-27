@@ -14,10 +14,10 @@ namespace WebserviceAbstract
     {
         protected const int KiloOctetsPerSeconde = 100;
         
-        private static int _jobs;
+        private int _jobs;
         public readonly static T Instance;
 
-        protected static readonly object Verrou = new object();
+        protected readonly object Verrou = new object();
 
         protected static readonly Queue<Job> Queue = new Queue<Job>();
         protected static readonly List<Job> DoneJob = new List<Job>();
@@ -76,13 +76,13 @@ namespace WebserviceAbstract
             return leJob;
         }
 
-        public static int Print(int taille, string nom, int copies)
+        public static int Print(int taille)
         {
-            lock (Verrou)
+            lock (Instance.Verrou)
             {
-                var leJob = new Job(++_jobs, taille * copies, DocumentState.Waiting);
+                var leJob = new Job(++Instance._jobs, taille, DocumentState.Waiting);
                 Queue.Enqueue(leJob);
-                return _jobs;
+                return Instance._jobs;
             }
         }
     }

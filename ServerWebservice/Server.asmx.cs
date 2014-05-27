@@ -42,7 +42,7 @@ namespace ServerWebservice
                         var leastBusy = LeastBusy();
                         JobQueues[leastBusy] += job.Taille;
 
-                        var printingOrder = new KeyValuePair<Client, int>(leastBusy, leastBusy.Print(job.Taille, "", 1));
+                        var printingOrder = new KeyValuePair<Client, int>(leastBusy, leastBusy.Print(job.Taille));
                         Bindings.TryAdd(job.JobId, printingOrder);
                     }
                     else

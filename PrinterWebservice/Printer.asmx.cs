@@ -40,10 +40,10 @@ namespace PrinterWebservice
             {
                 // ReSharper disable once PossibleLossOfFraction
                 double secondes = _printingJob.Taille/KiloOctetsPerSeconde;
-                double centpourcent = secondes;
+                var centpourcent = secondes;
                 while (secondes >= 0)
                 {
-                    int pourcentage = (int) ((1 - (secondes/centpourcent))*100);
+                    var pourcentage = (int) ((1 - (secondes/centpourcent))*100);
                     _printingJob.Status = "PRINTING " + pourcentage;
                     PrintingJob.Add(_printingJob);
                     Thread.Sleep(1000);

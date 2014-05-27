@@ -17,9 +17,9 @@ namespace WebserviceAbstract
             return _client.Ping();
         }
 
-        public int Print(int taille, string nom, int copies)
+        public int Print(int taille)
         {
-            return _client.Print(taille, nom, copies);
+            return _client.Print(taille, "", 1);
         }
         public string Status(int jobId)
         {

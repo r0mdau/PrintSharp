@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b6e4f853-2cf9-468f-876d-9a875a6a72e4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="69996234-cdf4-4331-865c-1b1d7ddec2ae" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -21,8 +21,8 @@
     <MetadataSource Address="http://localhost:40128/Printer.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Printer.wsdl" MetadataType="Wsdl" ID="afedcbfc-9707-4ae5-b158-e28bc42d1b8f" SourceId="1" SourceUrl="http://localhost:40128/Printer.asmx?wsdl" />
-    <MetadataFile FileName="Printer.disco" MetadataType="Disco" ID="fffb34b1-7135-42b9-b76a-ab3a9ea6d6ac" SourceId="1" SourceUrl="http://localhost:40128/Printer.asmx?disco" />
+    <MetadataFile FileName="Printer.wsdl" MetadataType="Wsdl" ID="4450ac5b-28ce-4cad-acd8-7a85f9691787" SourceId="1" SourceUrl="http://localhost:40128/Printer.asmx?wsdl" />
+    <MetadataFile FileName="Printer.disco" MetadataType="Disco" ID="ffc487c0-6cef-4091-b47b-f9dd6fc6e589" SourceId="1" SourceUrl="http://localhost:40128/Printer.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
