@@ -19,6 +19,12 @@ bld/
 PrintSharpClient/obj
 PrintSharpClient/bin
 
+PrintSharpPrinter/obj
+PrintSharpPrinter/bin
+
+PrintSharpServer/obj
+PrintSharpServer/bin
+
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
