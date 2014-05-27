@@ -25,7 +25,9 @@ namespace ServerWebservice
 
             public override string Status(int jobId)
             {
-                return !Bindings.ContainsKey(jobId) ? DocumentState.Waiting : Bindings[jobId].Key.Status(Bindings[jobId].Value);
+                if (!Bindings.ContainsKey(jobId)) return DocumentState.Notfound;
+                var status = Bindings[jobId].Key.Status(Bindings[jobId].Value);
+                return status == DocumentState.Notfound ? DocumentState.Waiting : status;
             }
 
             protected override void TraiterQueue()
