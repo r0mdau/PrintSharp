@@ -122,7 +122,6 @@ namespace PrintSharpPrinter
                 else
                 {
                     Thread.Sleep(2000);
-                    continue;
                 }
             }
         }
