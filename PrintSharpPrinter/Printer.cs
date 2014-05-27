@@ -22,7 +22,7 @@ namespace PrintSharpPrinter
     public class Printer : IPrinter
     {
         private static String name = "SPrint1";
-        private static int printSpeedPerMinute = 100; // one page = 100Ko
+        private static int printSpeedPerSeconde = 100; // one page = 100Ko
         private static String state = PrinterState.OFFLINE;
 
         private static int jobs = 0;
@@ -30,6 +30,7 @@ namespace PrintSharpPrinter
 
         private static readonly Queue<Job> queue = new Queue<Job>();
         private static Job printingJob = new Job(0, 0, DocumentState.DONE, DocumentState.DONE);
+        private static readonly List<Job> doneJob = new List<Job>();
 
         public struct Job
         {
@@ -50,9 +51,9 @@ namespace PrintSharpPrinter
         public Printer()
         {
             state = PrinterState.ONLINE;
-            Thread thread1 = new Thread(lancerImpression);
-            thread1.Start();
-            thread1.IsBackground = true;
+            Thread thPrinting = new Thread(lancerImpression);
+            thPrinting.Start();
+            thPrinting.IsBackground = true;
         }
 
         public string Status(int jobId)
@@ -93,6 +94,11 @@ namespace PrintSharpPrinter
                 if (tmp_job.jobId == id)
                     leJob = tmp_job;
             }
+            foreach (Job tmp_job in doneJob)
+            {
+                if (tmp_job.jobId == id)
+                    leJob = tmp_job;
+            }
             if (printingJob.jobId == id)
                 leJob = printingJob;
             return leJob;
@@ -123,7 +129,7 @@ namespace PrintSharpPrinter
 
         private void printing()
         {
-            double secondes = printingJob.taille / printSpeedPerMinute;
+            double secondes = printingJob.taille / printSpeedPerSeconde;
             double centpourcent = secondes;
             while (secondes >= 0)
             {
@@ -132,7 +138,8 @@ namespace PrintSharpPrinter
                 Thread.Sleep(1000);
                 secondes--;
             }
-            printingJob.status = DocumentState.DONE;      
+            printingJob.status = DocumentState.DONE;
+            doneJob.Add(printingJob);
         }
     }
 }
