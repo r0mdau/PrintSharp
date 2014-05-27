@@ -8,8 +8,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintSharpClient", "PrintSh
 		{C04A9E2D-04B1-4BA8-BBEA-AA62DBDF70DD} = {C04A9E2D-04B1-4BA8-BBEA-AA62DBDF70DD}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintSharpPrinter", "PrintSharpPrinter\PrintSharpPrinter.csproj", "{AADB0ABA-6F17-4A0F-9AA7-FDF9576613C7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintSharpServer", "PrintSharpServer\PrintSharpServer.csproj", "{1840FDAD-E262-4776-BBF4-930441E78668}"
 	ProjectSection(ProjectDependencies) = postProject
 		{9AEEACC3-A0A5-4E5C-A38A-B22D95C33A01} = {9AEEACC3-A0A5-4E5C-A38A-B22D95C33A01}
@@ -22,6 +20,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebserviceAbstract", "WebserviceAbstract\WebserviceAbstract.csproj", "{B37A7C4A-FF20-41E7-839B-246A20792416}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebserviceClient", "WebserviceClient\WebserviceClient.csproj", "{A5D7F99F-4CFC-4858-8EFC-7418FCB28F61}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C04A9E2D-04B1-4BA8-BBEA-AA62DBDF70DD} = {C04A9E2D-04B1-4BA8-BBEA-AA62DBDF70DD}
+		{9AEEACC3-A0A5-4E5C-A38A-B22D95C33A01} = {9AEEACC3-A0A5-4E5C-A38A-B22D95C33A01}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +35,6 @@ Global
 		{C8FCA3A3-C7EC-4696-8F5A-F6AF6FD8B60D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8FCA3A3-C7EC-4696-8F5A-F6AF6FD8B60D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8FCA3A3-C7EC-4696-8F5A-F6AF6FD8B60D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AADB0ABA-6F17-4A0F-9AA7-FDF9576613C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AADB0ABA-6F17-4A0F-9AA7-FDF9576613C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AADB0ABA-6F17-4A0F-9AA7-FDF9576613C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AADB0ABA-6F17-4A0F-9AA7-FDF9576613C7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1840FDAD-E262-4776-BBF4-930441E78668}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1840FDAD-E262-4776-BBF4-930441E78668}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1840FDAD-E262-4776-BBF4-930441E78668}.Release|Any CPU.ActiveCfg = Release|Any CPU

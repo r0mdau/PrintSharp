@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using WebserviceAbstract;
 using System.Collections.Generic;
 using System.Threading;
@@ -7,51 +8,47 @@ namespace PrintSharpPrinter
 {
     internal static class PrinterState
     {
-        public const string OFFLINE = "Offline";
-        public const string ONLINE = "Online";
-        public const string ERROR = "On error";
+        public const string Offline = "Offline";
+        public const string Online = "Online";
     }
 
     internal static class DocumentState
     {
-        public const string WAITING = "WAITING";
-        public const string DONE = "DONE";
-        public const string NOTFOUND = "NOTFOUND";
+        public const string Waiting = "WAITING";
+        public const string Done = "DONE";
+        public const string Notfound = "NOTFOUND";
     }
 
     public class Printer : IPrinter
     {
-        private static String name = "SPrint1";
-        private static int printSpeedPerSeconde = 100; // one page = 100Ko
-        private static String state = PrinterState.OFFLINE;
+        private const int KiloOctetsPerSeconde = 100;
+        private static String _state = PrinterState.Offline;
 
-        private static int jobs = 0;
-        static readonly object verrou = new object();
+        private static int _jobs;
+        static readonly object Verrou = new object();
 
-        private static readonly Queue<Job> queue = new Queue<Job>();
-        private static Job printingJob = new Job(0, 0, DocumentState.DONE, DocumentState.DONE);
-        private static readonly List<Job> doneJob = new List<Job>();
+        private static readonly Queue<Job> Queue = new Queue<Job>();
+        private static Job _printingJob = new Job(0, 0, DocumentState.Done);
+        private static readonly List<Job> DoneJob = new List<Job>();
 
-        public struct Job
+        private struct Job
         {
-            public int jobId; 
-            public int taille;
-            public string status;
-            public string name;
+            public readonly int JobId;
+            public readonly int Taille;
+            public string Status;
 
-            public Job(int id, int tail, string sts, string nam)
+            public Job(int id, int tail, string sts)
             {
-                jobId = id;
-                taille = tail;
-                status = sts;
-                name = nam;
+                JobId = id;
+                Taille = tail;
+                Status = sts;
             }
         }
 
         public Printer()
         {
-            state = PrinterState.ONLINE;
-            Thread thPrinting = new Thread(lancerImpression);
+            _state = PrinterState.Online;
+            var thPrinting = new Thread(LancerImpression);
             thPrinting.Start();
             thPrinting.IsBackground = true;
         }
@@ -59,86 +56,85 @@ namespace PrintSharpPrinter
         public string Status(int jobId)
         {   
             Job job;
-            lock (verrou)
+            lock (Verrou)
             {
-                job = this.getJob(jobId);
+                job = GetJob(jobId);
             }
-            return this.getStatus(job);
+            return GetStatus(job);
         }
 
         public int Print(int taille, string nom, int copies = 1)
         {
-            lock (verrou)
+            lock (Verrou)
             {
-                Job leJob = new Job(++jobs, taille, DocumentState.WAITING, nom);
-                queue.Enqueue(leJob);
+                var leJob = new Job(++_jobs, taille, DocumentState.Waiting);
+                Queue.Enqueue(leJob);
             }
-            return jobs;
+            return _jobs;
         }
 
         public bool Ping()
         {
-            return state != PrinterState.OFFLINE;
+            return _state != PrinterState.Offline;
         }
 
-        private string getStatus(Job leJob)
+        private static string GetStatus(Job leJob)
         {
-            return leJob.status;
+            return leJob.Status;
         }
 
-        private Job getJob(int id)
+        private static Job GetJob(int id)
         {
-            Job leJob = new Job(0, 0, DocumentState.NOTFOUND, DocumentState.NOTFOUND);            
-            foreach (Job tmp_job in queue)
+            var leJob = new Job(0, 0, DocumentState.Notfound);            
+            foreach (var tmpJob in Queue.Where(tmpJob => tmpJob.JobId == id))
             {
-                if (tmp_job.jobId == id)
-                    leJob = tmp_job;
+                leJob = tmpJob;
             }
-            foreach (Job tmp_job in doneJob)
+            foreach (var tmpJob in DoneJob.Where(tmpJob => tmpJob.JobId == id))
             {
-                if (tmp_job.jobId == id)
-                    leJob = tmp_job;
+                leJob = tmpJob;
             }
-            if (printingJob.jobId == id)
-                leJob = printingJob;
+            if (_printingJob.JobId == id)
+                leJob = _printingJob;
             return leJob;
         }
 
-        private void lancerImpression()
+        private static void LancerImpression()
         {
-            Job leJob;
             while (true)
             {
-                if (queue.Count > 0 && printingJob.status == DocumentState.DONE)
+                if (Queue.Count > 0 && _printingJob.Status == DocumentState.Done)
                 {
-                    lock (verrou)
+                    lock (Verrou)
                     {
-                        leJob = queue.Dequeue();
-                        leJob.status = "PRINTING 0";
-                        printingJob = leJob;
+                        var leJob = Queue.Dequeue();
+                        leJob.Status = "PRINTING 0";
+                        _printingJob = leJob;
                     }
-                    this.printing();
+                    Printing();
                 }
                 else
                 {
                     Thread.Sleep(2000);
                 }
             }
+        // ReSharper disable once FunctionNeverReturns
         }
 
-        private void printing()
+        private static void Printing()
         {
-            double secondes = printingJob.taille / printSpeedPerSeconde;
-            double centpourcent = secondes;
+            // ReSharper disable once PossibleLossOfFraction
+            double secondes = _printingJob.Taille / KiloOctetsPerSeconde;
+            var centpourcent = secondes;
             while (secondes >= 0)
             {
-                int pourcentage = (int) ((1 - (secondes / centpourcent)) * 100);
-                printingJob.status = "PRINTING " + pourcentage;
+                var pourcentage = (int) ((1 - (secondes / centpourcent)) * 100);
+                _printingJob.Status = "PRINTING " + pourcentage;
                 Thread.Sleep(1000);
                 secondes--;
             }
-            printingJob.status = DocumentState.DONE;
-            doneJob.Add(printingJob);
+            _printingJob.Status = DocumentState.Done;
+            DoneJob.Add(_printingJob);
         }
     }
 }

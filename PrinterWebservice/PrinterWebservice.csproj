@@ -60,10 +60,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PrintSharpPrinter\PrintSharpPrinter.csproj">
-      <Project>{aadb0aba-6f17-4a0f-9aa7-fdf9576613c7}</Project>
-      <Name>PrintSharpPrinter</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WebserviceAbstract\WebserviceAbstract.csproj">
       <Project>{b37a7c4a-ff20-41e7-839b-246a20792416}</Project>
       <Name>WebserviceAbstract</Name>
