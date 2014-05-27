@@ -15,7 +15,7 @@ namespace WebserviceAbstract
         protected const int KiloOctetsPerSeconde = 100;
         
         private static int _jobs;
-        private readonly static T Instance;
+        public readonly static T Instance;
 
         protected static readonly object Verrou = new object();
 
@@ -49,20 +49,12 @@ namespace WebserviceAbstract
             thPrinting.IsBackground = true;
         }
 
-        private static string GetStatus(Job leJob)
+        protected static string GetStatus(Job leJob)
         {
             return leJob.Status;
         }
 
-        public static string Status(int jobId)
-        {
-            Job job;
-            lock (Verrou)
-            {
-                job = GetJob(jobId);
-            }
-            return GetStatus(job);
-        }
+        public abstract string Status(int jobId);
 
         protected abstract void TraiterQueue();
 

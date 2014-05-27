@@ -8,7 +8,7 @@ namespace PrintSharpClient
 {
     public partial class MainView : Form
     {
-        private const string ServerUri = @"http://localhost:40128/Printer.asmx";
+        private const string ServerUri = @"http://localhost:40129/Server.asmx";
         private readonly Client _client = new Client(ServerUri);
 
         public MainView()

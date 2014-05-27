@@ -53,6 +53,16 @@ namespace PrinterWebservice
                 PrintingJob.Remove(_printingJob);
                 DoneJob.Add(_printingJob);
             }
+
+            public override string Status(int jobId)
+            {
+                Job job;
+                lock (Verrou)
+                {
+                    job = GetJob(jobId);
+                }
+                return GetStatus(job);
+            }
         }
     }
 }

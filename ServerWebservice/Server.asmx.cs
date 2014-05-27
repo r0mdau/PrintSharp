@@ -1,5 +1,8 @@
-﻿using System;
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Threading;
 using System.Web.Services;
 using WebserviceAbstract;
 
@@ -12,9 +15,54 @@ namespace ServerWebservice
     {
         public class ServerInternal : PrinterAbstract<ServerInternal>
         {
+            private static readonly Dictionary<Client, int> JobQueues = new Dictionary<Client, int>();
+            private static readonly ConcurrentDictionary<int, KeyValuePair<Client, int>> Bindings = new ConcurrentDictionary<int, KeyValuePair<Client, int>>();
+
+            static ServerInternal()
+            {
+                JobQueues.Add(new Client(@"http://localhost:40128/Printer.asmx"), 0);
+            }
+
+            public override string Status(int jobId)
+            {
+                return !Bindings.ContainsKey(jobId) ? DocumentState.Waiting : Bindings[jobId].Key.Status(Bindings[jobId].Value);
+            }
+
             protected override void TraiterQueue()
             {
-                throw new NotImplementedException();
+                while (true)
+                {
+                    if (Queue.Count > 0)
+                    {
+                        var job = Queue.Dequeue();
+                        PrintingJob.Add(job);
+                        
+                        var leastBusy = LeastBusy();
+                        JobQueues[leastBusy] += job.Taille;
+
+                        var printingOrder = new KeyValuePair<Client, int>(leastBusy, leastBusy.Print(job.Taille, "", 1));
+                        Bindings.TryAdd(job.JobId, printingOrder);
+                    }
+                    else
+                    {
+                        Thread.Sleep(2000);
+                    }
+                }
+                // ReSharper disable once FunctionNeverReturns
+            }
+
+            private static Client LeastBusy()
+            {
+                var leastBusy = JobQueues.Keys.First();
+                int[] lesserCharge = {0};
+
+                foreach (var queue in JobQueues.Where(queue => queue.Value < lesserCharge[0]))
+                {
+                    lesserCharge[0] = queue.Value;
+                    leastBusy = queue.Key;
+                }
+
+                return leastBusy;
             }
         }
     }

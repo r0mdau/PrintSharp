@@ -20,7 +20,7 @@ namespace WebserviceAbstract
         [WebMethod]
         public string Status(int jobId)
         {
-            return PrinterAbstract<T>.Status(jobId);
+            return PrinterAbstract<T>.Instance.Status(jobId);
         }
     }
 }
