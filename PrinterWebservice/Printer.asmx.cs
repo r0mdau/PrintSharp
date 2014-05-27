@@ -11,7 +11,7 @@ namespace PrinterWebservice
     {
         protected override IPrinter Handler
         {
-            get { return PrintSharpPrinter.Printer.Instance(); }
+            get { return new PrintSharpPrinter.Printer(); }
         }
     }
 }
