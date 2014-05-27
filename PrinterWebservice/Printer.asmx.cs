@@ -13,19 +13,6 @@ namespace PrinterWebservice
     [ToolboxItem(false)]
     public class Printer : PrinterWebserviceAbstract
     {
-        private static class PrinterState
-        {
-            public const string Offline = "Offline";
-            public const string Online = "Online";
-        }
-
-        private static class DocumentState
-        {
-            public const string Waiting = "WAITING";
-            public const string Done = "DONE";
-            public const string Notfound = "NOTFOUND";
-        }
-
         protected override IPrinter Handler
         {
             get { return new PrinterInternal(); }

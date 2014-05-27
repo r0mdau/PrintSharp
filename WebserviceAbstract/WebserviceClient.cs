@@ -1,7 +1,7 @@
 ﻿using System.ServiceModel;
-using WebserviceClient.DistantPrinter;
+using WebserviceAbstract.DistantPrinter;
 
-namespace WebserviceClient
+namespace WebserviceAbstract
 {
     public class Client
     {

@@ -51,6 +51,17 @@
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fenetre.resx">
+      <DependentUpon>Fenetre.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebserviceAbstract\WebserviceAbstract.csproj">
+      <Project>{B37A7C4A-FF20-41E7-839B-246A20792416}</Project>
+      <Name>WebserviceAbstract</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
