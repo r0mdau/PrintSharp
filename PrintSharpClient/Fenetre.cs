@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Net.NetworkInformation;
-using System.Text;
 using System.Windows.Forms;
 
 namespace PrintSharpClient
@@ -16,7 +14,7 @@ namespace PrintSharpClient
         {
             var dialog = new OpenFileDialog
             {
-                InitialDirectory = Environment.GetEnvironmentVariable("USERPROFILE"),
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 Filter = @"txt files (*.txt)|*.txt|All files (*.*)|*.*",
                 FilterIndex = 2,
                 RestoreDirectory = true
@@ -32,9 +30,6 @@ namespace PrintSharpClient
         {
             if (!string.IsNullOrEmpty(pathToFile.Text))
             {
-                Log("En cours d'impression : " + pathToFile.Text);
-                var file = new FileToSend(pathToFile.Text, 100);
-                FileTransfert.SendFile(file.JsonData());
             }
             else
             {
@@ -49,27 +44,6 @@ namespace PrintSharpClient
 
         private void BtnPingClick(object sender, EventArgs e)
         {
-            var pingSender = new Ping();
-            var options = new PingOptions {DontFragment = true};
-            byte[] buffer = Encoding.ASCII.GetBytes("wazaajaitrentedeuxbitsdansmonsac");
-            const int timeout = 120;
-            string ip = !string.IsNullOrEmpty(pathToFile.Text) ? pathToFile.Text : "8.8.8.8";
-            try
-            {
-                PingReply reply = pingSender.Send(ip, timeout, buffer, options);
-
-                if (reply == null || reply.Status != IPStatus.Success) return;
-
-                Log("Address: " + reply.Address);
-                Log("RoundTrip time: " + reply.RoundtripTime);
-                Log("Time to live: " + reply.Options.Ttl);
-                Log("Don't fragment: " + reply.Options.DontFragment);
-                Log("Buffer size: " + reply.Buffer.Length);
-            }
-            catch (PingException)
-            {
-                Log("Erreur : adresse ip incorrecte !");
-            }
         }
 
         private void Log(String message)

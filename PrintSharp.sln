@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintSharpClient", "PrintSharpClient\PrintSharpClient.csproj", "{C8FCA3A3-C7EC-4696-8F5A-F6AF6FD8B60D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C04A9E2D-04B1-4BA8-BBEA-AA62DBDF70DD} = {C04A9E2D-04B1-4BA8-BBEA-AA62DBDF70DD}
@@ -18,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrinterWebservice", "PrinterWebservice\PrinterWebservice.csproj", "{9AEEACC3-A0A5-4E5C-A38A-B22D95C33A01}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebserviceAbstract", "WebserviceAbstract\WebserviceAbstract.csproj", "{B37A7C4A-FF20-41E7-839B-246A20792416}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebserviceClient", "WebserviceClient\WebserviceClient.csproj", "{A5D7F99F-4CFC-4858-8EFC-7418FCB28F61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +53,10 @@ Global
 		{B37A7C4A-FF20-41E7-839B-246A20792416}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B37A7C4A-FF20-41E7-839B-246A20792416}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B37A7C4A-FF20-41E7-839B-246A20792416}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5D7F99F-4CFC-4858-8EFC-7418FCB28F61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5D7F99F-4CFC-4858-8EFC-7418FCB28F61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5D7F99F-4CFC-4858-8EFC-7418FCB28F61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5D7F99F-4CFC-4858-8EFC-7418FCB28F61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
