@@ -2,26 +2,25 @@
 
 namespace WebserviceAbstract
 {
-    public abstract class PrinterWebserviceAbstract : WebService
+    public abstract class PrinterWebserviceAbstract<T> : WebService where T : PrinterAbstract<T>, new()
     {
-        protected abstract IPrinter Handler { get; }
 
         [WebMethod]
         public bool Ping()
         {
-            return Handler.Ping();
+            return true;
         }
 
         [WebMethod]
         public int Print(int taille, string nom, int copies)
         {
-            return Handler.Print(taille, nom, copies);
+            return PrinterAbstract<T>.Print(taille, nom, copies);
         }
 
         [WebMethod]
         public string Status(int jobId)
         {
-            return Handler.Status(jobId);
+            return PrinterAbstract<T>.Status(jobId);
         }
     }
 }

@@ -37,7 +37,7 @@
     <Reference Include="System.Web.Services" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IPrinter.cs" />
+    <Compile Include="PrinterAbstract.cs" />
     <Compile Include="PrinterWebserviceAbstract.cs">
       <SubType>Component</SubType>
     </Compile>
