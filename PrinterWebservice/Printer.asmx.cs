@@ -39,7 +39,7 @@ namespace PrinterWebservice
             private static void Printing()
             {
                 // ReSharper disable once PossibleLossOfFraction
-                double secondes = _printingJob.Taille/KiloOctetsPerSeconde;
+                double secondes = _printingJob.Taille / (KiloOctetsPerSeconde * 1000);
                 double centpourcent = secondes;
                 while (secondes >= 0)
                 {
