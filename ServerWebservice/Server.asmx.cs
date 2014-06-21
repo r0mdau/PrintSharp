@@ -21,6 +21,7 @@ namespace ServerWebservice
             static ServerInternal()
             {
                 JobQueues.Add(new Client(@"http://localhost:40128/Printer.asmx"), 0);
+                JobQueues.Add(new Client(@"http://localhost:40138/Printer2.asmx"), 0);
             }
 
             public override string Status(int jobId)
