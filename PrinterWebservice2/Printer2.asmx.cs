@@ -3,12 +3,12 @@ using System.Threading;
 using System.Web.Services;
 using WebserviceAbstract;
 
-namespace PrinterWebservice
+namespace PrinterWebservice2
 {
     [WebService(Namespace = "http://127.0.0.1/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [ToolboxItem(false)]
-    public class Printer : PrinterWebserviceAbstract<Printer.PrinterInternal>
+    public class Printer2 : PrinterWebserviceAbstract<Printer2.PrinterInternal>
     {
         public class PrinterInternal : PrinterAbstract<PrinterInternal>
         {
@@ -43,7 +43,7 @@ namespace PrinterWebservice
                 double centpourcent = secondes;
                 while (secondes >= 0)
                 {
-                    var pourcentage = (int) ((1 - (secondes/centpourcent))*100);
+                    int pourcentage = (int) ((1 - (secondes/centpourcent))*100);
                     _printingJob.Status = "PRINTING " + pourcentage;
                     PrintingJob.Add(_printingJob);
                     Thread.Sleep(1000);

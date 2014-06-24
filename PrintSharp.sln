@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrinterWebservice", "Printe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebserviceAbstract", "WebserviceAbstract\WebserviceAbstract.csproj", "{B37A7C4A-FF20-41E7-839B-246A20792416}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrinterWebservice2", "PrinterWebservice2\PrinterWebservice2.csproj", "{A3D281DA-9C56-4503-980A-FDAAA642EAA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{B37A7C4A-FF20-41E7-839B-246A20792416}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B37A7C4A-FF20-41E7-839B-246A20792416}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B37A7C4A-FF20-41E7-839B-246A20792416}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3D281DA-9C56-4503-980A-FDAAA642EAA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3D281DA-9C56-4503-980A-FDAAA642EAA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3D281DA-9C56-4503-980A-FDAAA642EAA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3D281DA-9C56-4503-980A-FDAAA642EAA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
