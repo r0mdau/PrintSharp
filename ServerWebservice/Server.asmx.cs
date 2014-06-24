@@ -1,6 +1,8 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Web.Services;
@@ -22,6 +24,18 @@ namespace ServerWebservice
             {
                 JobQueues.Add(new Client(@"http://localhost:40128/Printer.asmx"), 0);
                 JobQueues.Add(new Client(@"http://localhost:40138/Printer2.asmx"), 0);
+            }
+
+            private static readonly object LogLock = new object();
+
+            private static readonly string LogPath =
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Log", DateTime.Now.ToString("yy-mm-dd hh:mm:ss"));
+            private static void Log(string message)
+            {
+                lock (LogLock)
+                {
+                    File.WriteAllText(LogPath, File.ReadAllText(LogPath) + Environment.NewLine + message);
+                }
             }
 
             public override string Status(int jobId)
