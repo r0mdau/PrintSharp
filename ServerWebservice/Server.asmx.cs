@@ -57,7 +57,7 @@ namespace ServerWebservice
             private static Client LeastBusy()
             {
                 var leastBusy = JobQueues.Keys.First();
-                int[] lesserCharge = {0};
+                int[] lesserCharge = {int.MaxValue};
 
                 foreach (var queue in JobQueues.Where(queue => queue.Value < lesserCharge[0]))
                 {
