@@ -27,14 +27,19 @@ namespace ServerWebservice
             }
 
             private static readonly object LogLock = new object();
-
+            
+            private static readonly string LogDir =
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Log");
             private static readonly string LogPath =
-                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Log", DateTime.Now.ToString("yy-mm-dd hh:mm:ss"));
+                Path.Combine(LogDir, DateTime.Now.ToString("yymmddhhmmss") + ".log");
+            
             private static void Log(string message)
             {
                 lock (LogLock)
                 {
-                    File.WriteAllText(LogPath, File.ReadAllText(LogPath) + Environment.NewLine + message);
+                    if(!Directory.Exists(LogDir))
+                        Directory.CreateDirectory(LogDir);
+                    File.WriteAllText(LogPath, File.Exists(LogPath) ? File.ReadAllText(LogPath) : "" + Environment.NewLine + message);
                 }
             }
 
@@ -53,6 +58,7 @@ namespace ServerWebservice
                     {
                         var job = Queue.Dequeue();
                         PrintingJob.Add(job);
+                        Log("Impression du fichier numéro : " + job.JobId);
                         
                         var leastBusy = LeastBusy();
                         JobQueues[leastBusy] += job.Taille;
@@ -78,7 +84,7 @@ namespace ServerWebservice
                     lesserCharge[0] = queue.Value;
                     leastBusy = queue.Key;
                 }
-
+                Log("Imprimante la moins chargée : " + leastBusy);
                 return leastBusy;
             }
         }
